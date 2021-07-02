@@ -1,0 +1,142 @@
+class Mark
+
+instance variables
+perPersonMark:MarkInput;
+
+types
+public Correct=nat inv a==a<=2;
+public Pages=nat inv b==b<=2;
+public Complete=nat inv c==c<=2;
+public Reference=nat inv d==d<=2;
+public MarkInput=Correct*Pages*Complete*Reference;
+
+operations
+-- rules for range
+public getformatCorrect:()==>seq of char
+	getformatCorrect()==
+	(
+		return "Mark given for Report Correctness only range between 0 - 2"
+	);
+
+public getformatPage:()==>seq of char
+	getformatPage()==
+	(
+		return "Mark given for Report Page only range between 0 - 2"
+	);
+
+public getformatComplete:()==>seq of char
+	getformatComplete()==
+	(
+		return "Mark given for Report Complete only range between 0 - 2"
+	);
+
+public getformatReference:()==>seq of char
+	getformatReference()==
+	(
+		return "Mark given for Report Reference only range between 0 - 2"
+	);
+
+public setPerPersonMark:Correct*Pages*Complete*Reference==>MarkInput
+	setPerPersonMark(correct,pages,complete,reference)==
+	(
+		perPersonMark:=mk_(correct,pages,complete,reference);
+		return perPersonMark
+	);
+
+public processCorrect:()==>seq of char
+	processCorrect()==
+	(
+		if perPersonMark.#1=2
+		then
+		(
+			return "Mark 2, Excellent for Correctness"
+		);
+		if perPersonMark.#1=1
+		then
+		(
+			return "Mark 1, Good for Correctness"
+		);
+		if perPersonMark.#1=0
+		then
+		(
+			return "Mark 0, Need to improve for Correctness"
+		);
+		return "Out of Range for Correctness"
+	);
+
+public processPages:()==>seq of char
+	processPages()==
+	(
+		if perPersonMark.#2=2
+		then
+		(
+			return "Mark 2, Excellent for Pages"
+		);
+		if perPersonMark.#2=1
+		then
+		(
+			return "Mark 1, Good for Pages"
+		);
+		if perPersonMark.#2=0
+		then
+		(
+			return "Mark 0, Need to improve for Pages"
+		);
+		return "Out of Range for Pages"
+	);
+
+public processComplete:()==>seq of char
+	processComplete()==
+	(
+		if perPersonMark.#3=2
+		then
+		(
+			return "Mark 2, Excellent for Completeness"
+		);
+		if perPersonMark.#3=1
+		then
+		(
+			return "Mark 1, Good for Completeness"
+		);
+		if perPersonMark.#3=0
+		then
+		(
+			return "Mark 0, Need to improve for Completeness"
+		);
+		return "Out of Range for Completeness"
+	);
+
+public processReference:()==>seq of char
+	processReference()==
+	(
+		if perPersonMark.#4=2
+		then
+		(
+			return "Mark 2, Excellent for Reference"
+		);
+		if perPersonMark.#4=1
+		then
+		(
+			return "Mark 1, Good for Reference"
+		);
+		if perPersonMark.#4=0
+		then
+		(
+			return "Mark 0, Need to improve for Reference"
+		);
+		return "Out of Range for Completeness"
+	);
+
+
+public getTotalMark:()==>nat
+	getTotalMark()==
+	(
+		if perPersonMark.#1>=0 and perPersonMark.#1<=2 and perPersonMark.#2<=2 and perPersonMark.#2<=2 and perPersonMark.#3<=2 and perPersonMark.#3<=2 and perPersonMark.#4<=2 and perPersonMark.#4<=2
+		then
+		(
+			return perPersonMark.#1+perPersonMark.#2+perPersonMark.#3+perPersonMark.#4
+		);
+		return "One of the mark is out of range. Please check"
+	);
+end Mark
+

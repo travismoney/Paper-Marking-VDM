@@ -1,0 +1,21 @@
+Initialisation
+create a := new Mark()
+
+To display rules:
+print a.getformatCorrect()
+print a.getformatPage()
+print a.getformatComplete()
+Print a.getformatReference()
+
+To input one student mark (randomly input the number)
+It goes in the form of (correct,page,complete,reference)
+print a.setPerPersonMark(1,1,1,1)
+
+To get total mark per student
+print a.getTotalMark()
+
+If the input is out of range then user need to check
+print a.processCorrect()
+print a.processPage()
+print a.processComplete()
+print a.processReference()
